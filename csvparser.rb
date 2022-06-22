@@ -7,8 +7,8 @@ ltvarray = []
 
 # for each method to read CSV file line by line. foreach not for each
 # add rows into it's own array
-CSV.foreach("test.csv", headers: true, col_sep: ",") do |row|
+CSV.foreach("test.csv", headers: true, converters: :numeric, col_sep: ",") do |row|
   ltvarray << row[0]
 end
 
-puts ltvarray
+puts ltvarray.sum
