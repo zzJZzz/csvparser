@@ -4,11 +4,21 @@ require "csv"
 
 # array for storing ltv values which is in row "1" but actually row 0 because of zero based indexing
 ltvarray = []
+cacarray = []
+churnarray = []
 
 # for each method to read CSV file line by line. foreach not for each
 # add rows into it's own array
 CSV.foreach("test.csv", headers: true, converters: :numeric, col_sep: ",") do |row|
   ltvarray << row[0]
+  cacarray << row[1]
+  churnarray << row[2]
 end
 
-puts ltvarray.sum
+totalltv = ltvarray.sum
+totalcac = cacarray.sum
+totalchurn = churnarray.sum
+
+results = totalltv + totalcac + totalchurn
+
+puts results
